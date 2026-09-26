@@ -1,0 +1,37 @@
+import random
+from browser import timer, 
+name = input("Enter your name: ")s
+color = input("Enter your favorite color: ")
+age = int(input("Enter your upcoming birthday age (current age + 1): "))
+
+copters = []
+
+def move_copters():
+    for copter in copters:
+        copter.set_position(random.randint(0, get_width()), random.randint(0, get_height()))
+
+def start():
+    background = Rectangle(get_width(), get_height())
+    background.set_color(color)
+    background.set_position(0, 0)
+    add(background)
+
+    for i in range(age):
+        copter = Image("https://codehs.com/uploads/4ec325503de2b6bc93e5b6acc5505c0b")
+        copter.set_size(40, 20)
+        copter.set_position(random.randint(0, get_width()), random.randint(0, get_height()))
+        add(copter)
+        copters.append(copter)
+
+    label = Text("Happy Birthday " + name + "!")
+    label.set_position(get_width() / 2 - 60, 30)
+    label.set_font("20px Arial")
+    add(label)
+
+    song = window.Audio.new("https://codehs.com/uploads/6db2c892b43e234cee99b53437573e0e")
+    song.play()
+
+    timer.set_interval(move_copters, 2000)
+
+    print("Happy Birthday " + name)
+start()
